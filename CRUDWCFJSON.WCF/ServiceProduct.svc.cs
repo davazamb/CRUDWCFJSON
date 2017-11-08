@@ -14,12 +14,44 @@ namespace CRUDWCFJSON.WCF
     {
         public bool Create(Product product)
         {
-            throw new NotImplementedException();
+            using (TiendaEntities ctx = new TiendaEntities())
+            {
+                try
+                {
+                    ProductEntity p = new ProductEntity();
+                    p.Name = product.Name;
+                    p.Price = product.Price;
+                    p.Quantity = product.Quantity;
+                    ctx.ProductEntities.Add(p);
+                    ctx.SaveChanges();
+                    return true;
+                }
+                catch 
+                {
+                    return false;
+                }                
+               
+            }
         }
 
         public bool Delete(Product product)
         {
-            throw new NotImplementedException();
+            using (TiendaEntities ctx = new TiendaEntities())
+            {
+                try
+                {
+                    int id = Convert.ToInt32(product.Id);
+                    ProductEntity p = ctx.ProductEntities.Single(pe => pe.Id == id);
+                    ctx.ProductEntities.Remove(p);
+                    ctx.SaveChanges();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+
+            }
         }
 
         public void DoWork()
@@ -28,7 +60,25 @@ namespace CRUDWCFJSON.WCF
 
         public bool Edit(Product product)
         {
-            throw new NotImplementedException();
+            using (TiendaEntities ctx = new TiendaEntities())
+            {
+                try
+                {
+                    int id = Convert.ToInt32(product.Id);
+                    ProductEntity p = ctx.ProductEntities.Single(pe=> pe.Id == id);
+                    p.Name = product.Name;
+                    p.Price = product.Price;
+                    p.Quantity = product.Quantity;
+                    ctx.ProductEntities.Add(p);
+                    ctx.SaveChanges();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+
+            }
         }
 
         public Product Find(string id)

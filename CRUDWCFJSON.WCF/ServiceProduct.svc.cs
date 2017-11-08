@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using CRUDWCFJSON.WCF.Models;
 
 namespace CRUDWCFJSON.WCF
 {
@@ -11,8 +12,54 @@ namespace CRUDWCFJSON.WCF
     // NOTA: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione ServiceProduct.svc o ServiceProduct.svc.cs en el Explorador de soluciones e inicie la depuración.
     public class ServiceProduct : IServiceProduct
     {
+        public bool Create(Product product)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Delete(Product product)
+        {
+            throw new NotImplementedException();
+        }
+
         public void DoWork()
         {
+        }
+
+        public bool Edit(Product product)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Product Find(string id)
+        {
+            using (TiendaEntities ctx = new TiendaEntities())
+            {
+                int mid = Convert.ToInt32(id);
+                return ctx.ProductEntities.Where(p => p.Id == mid).Select(p => new Product
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Price = p.Price.Value,
+                    Quantity = p.Quantity.Value
+
+                }).First();
+            }
+        }
+
+        public List<Product> FindAll()
+        {
+            using (TiendaEntities ctx = new TiendaEntities())
+            {
+                return ctx.ProductEntities.Select(p => new Product
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Price = p.Price.Value,
+                    Quantity = p.Quantity.Value
+
+                }).ToList();
+            }
         }
     }
 }

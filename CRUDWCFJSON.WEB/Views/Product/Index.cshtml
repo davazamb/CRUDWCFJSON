@@ -21,6 +21,7 @@
                 <th>Price</th>
                 <th>Quantity</th>
                 <th>Date</th>
+                <th>Option</th>
             </tr>
             @foreach (var product in ViewBag.listProducts)
             {
@@ -30,6 +31,8 @@
                     <td>@product.Price</td>
                     <td>@product.Quantity</td>
                     <td>@product.CreationDate</td>
+                    <td><a href="@Url.Action("Delete", "Product", new { id = product.Id })">Delete</a>
+                    <a href="@Url.Action("Edit", "Product", new { id = product.Id })">Edit</a></td>
                 </tr>
 
             }

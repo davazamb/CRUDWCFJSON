@@ -22,6 +22,7 @@ namespace CRUDWCFJSON.WCF
                     p.Name = product.Name;
                     p.Price = product.Price;
                     p.Quantity = product.Quantity;
+                    p.CreationDate = product.CreationDate;
                     ctx.ProductEntities.Add(p);
                     ctx.SaveChanges();
                     return true;
@@ -69,6 +70,7 @@ namespace CRUDWCFJSON.WCF
                     p.Name = product.Name;
                     p.Price = product.Price;
                     p.Quantity = product.Quantity;
+                    p.CreationDate = product.CreationDate;
                     ctx.ProductEntities.Add(p);
                     ctx.SaveChanges();
                     return true;
@@ -91,8 +93,9 @@ namespace CRUDWCFJSON.WCF
                     Id = p.Id,
                     Name = p.Name,
                     Price = p.Price.Value,
-                    Quantity = p.Quantity.Value
-
+                    Quantity = p.Quantity.Value,
+                    CreationDate = p.CreationDate.Value
+                    
                 }).First();
             }
         }
@@ -106,7 +109,8 @@ namespace CRUDWCFJSON.WCF
                     Id = p.Id,
                     Name = p.Name,
                     Price = p.Price.Value,
-                    Quantity = p.Quantity.Value
+                    Quantity = p.Quantity.Value,
+                    CreationDate = p.CreationDate.Value
 
                 }).ToList();
             }

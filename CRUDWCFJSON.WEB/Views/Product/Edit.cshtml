@@ -1,4 +1,5 @@
 ﻿@model CRUDWCFJSON.WEB.ViewModels.ProductViewModel
+
 @{
     Layout = null;
 }
@@ -8,13 +9,20 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Create</title>
+    <title>Edit</title>
 </head>
 <body>
-    <div> 
-        @using (Html.BeginForm("Create", "Product"))
+    <div>
+        @using (Html.BeginForm("Edit", "Product"))
         {
             <table cellpadding="2" cellspacing="2">
+                <tr>
+                    <td>@Html.LabelFor(model => model.Product.Id)</td>
+                    <td>
+                        @Html.ValueFor(model => model.Product.Id)
+                        @Html.HiddenFor(model => model.Product.Id)
+                    </td>
+                </tr>
                 <tr>
                     <td>@Html.LabelFor(model => model.Product.Name)</td>
                     <td>@Html.TextBoxFor(model => model.Product.Name)</td>

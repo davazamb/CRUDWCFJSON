@@ -8,6 +8,6 @@ namespace CRUDWCFJSON.WEB.ViewModels
 {
     public class ProductViewModel
     {
-        public Product MyProperty { get; set; }
+        public Product Product { get; set; }
     }
 }

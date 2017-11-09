@@ -14,7 +14,7 @@ namespace CRUDWCFJSON.WCF
     public interface IServiceProduct
     {
         [OperationContract]
-        [WebInvoke(Method ="GET", UriTemplate ="finall", ResponseFormat = WebMessageFormat.Json)]
+        [WebInvoke(Method ="GET", UriTemplate ="findall", ResponseFormat = WebMessageFormat.Json)]
         List<Product> FindAll();
 
         [OperationContract]
